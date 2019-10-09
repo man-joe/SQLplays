@@ -88,3 +88,61 @@ concat(`FirstName`, ' ', `LastName`);
 
 ALTER TABLE customer 
    CHANGE FullName FullName varchar(255) NOT NULL after title;
+   
+select * from customer where LastName = 'Smith';
+
+select FullName, LastName, City, customer.position, Company, customer.CompanyID
+from customer 
+inner join company on customer.companyID = company.CompanyID
+where City='Toledo';
+
+select FullName, LastName, City, customer.position, Company, customer.CompanyID
+from customer 
+inner join company on customer.companyID = company.CompanyID
+where City='Virginia Beach';
+
+SELECT       company, customer.CompanyID, 
+COUNT(customer.CompanyID) AS `value_occurrence` 
+FROM     customer
+INNER JOIN company on customer.CompanyID = company.companyID
+GROUP BY `companyID`
+ORDER BY `value_occurrence` DESC;
+
+SELECT       customer.State,
+COUNT(customer.State) AS `value_occurrence` 
+FROM     customer
+GROUP BY `State`
+ORDER BY `value_occurrence` DESC;
+select * from Customer;
+
+
+select * 
+from customer
+where FullName='Paula Hill' and City='Anaheim' and State='CA';
+
+update customer
+set LastName = 'Smith'
+where FullName='Paula Hill' and City='Anaheim' and State='CA';
+
+select *
+from customer
+where LastName='Smith';
+
+select * 
+from customer
+where FullName='Vanessa Brown';
+
+update customer
+set LastName = 'Smith'
+where FullName='Vanessa Brown';
+
+select customer.LastName,
+count(customer.LastName) as `value_occurrence` 
+from customer
+group by `LastName`
+order by `value_occurrence` desc;
+
+select *
+from customer
+where LastName like 'S%';
+
